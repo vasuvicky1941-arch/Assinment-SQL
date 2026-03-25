@@ -1,12 +1,5 @@
-1. Create a table name as Travels with whatever the details needed (Apply constraints).
+3.Create a table name as Travels with whatever the details needed (Apply constraints)
 
-  create table Traveln(
-     car_no tinyint unique,
-     car_name varchar(20) not null,
-     car_price int check (car_price > 100),
-     car_status varchar(50) default "no"
- );
- 
- select*from Traveln;
- insert into Traveln(car_price)values(150);
- insert into Traveln(car_no,car_name)values(36,"kia");
+
+
+
