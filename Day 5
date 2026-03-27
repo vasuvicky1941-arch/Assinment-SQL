@@ -1,0 +1,28 @@
+1. Display Minimum Salary, Maximum Salary and Average Salary with 3 sepearate columns
+
+create database employees;
+    use employees;
+     create table emp_details(
+     emp_no int,
+     emp_Name varchar(20),
+     emp_salary int
+     );
+     
+	select*from emp_details;
+	insert into emp_details values(1,"vicky",14000),(2,"kumar",15000),(3,"deva",20000),(4,"hari",10000);
+    select  min(emp_salary) as emp_salary from emp_details;
+    select max(emp_salary) as emp_salary from emp_details;
+    select count(*) as emp_details,avg(emp_salary) as Average from emp_details;
+
+2.Take a String like "GOOD MORNING" display only "GOOD", length of "MORNING".
+Join a word "afternoon" with "GOOD" which should be taken from "GOOD MORNING" and display result in all CAPS.
+
+  set @a ='GOOD MORNING';
+  select substring(@a,1,4) into @c;
+  select @c;
+
+  set @b ="MORNING";
+  select length(@b);
+
+  set @d ="afternoon";
+  select concat(@c," ",@d);
