@@ -1,0 +1,36 @@
+What is Normalization? Explain the concept
+
+  Normalization is a core database design principle, not specific to MySQL, used to organize data efficiently to
+reduce redundancy and improve data integrity. This is achieved by systematically breaking down large tables
+into smaller, related tables and defining relationships between them using keys 
+
+Concept :
+First Normal Form (1NF):
+   
+Each column must contain only a single, atomic (indivisible) value, and there should be no repeating
+groups of data
+
+Second Normal Form (2NF): 
+    A table must be in 1NF, and all non-key attributes must be fully dependent on the entire primary key.
+This typically applies to tables with a composite primary key. 
+
+Third Normal Form (3NF):  
+   A table must be in 2NF, and there should be no transitive dependencies. This means non-key
+attributes should not depend on other non-key attributes. 
+
+2.Explain about different joins available in SQL with its Syntax.
+
+INNER JOIN: 
+    Returns rows with matches in both tables.
+LEFT JOIN:  
+    Returns all rows from the left table and matching rows from the right table, using NULL for nonmatches.
+RIGHT JOIN: 
+    Returns all rows from the right table and matching rows from the left table, using NULL for
+non-matches.
+FULL OUTER JOIN (Simulated): 
+    MySQL does not have a native FULL OUTER JOIN but it can be simulated
+using LEFT JOIN and RIGHT JOIN with UNION.
+CROSS JOIN: 
+    Creates a Cartesian product of all rows from both tables.
+SELF JOIN: 
+     Joins a table to itself using aliases
