@@ -1,0 +1,28 @@
+1.Create a table Employees and write a window function to Rank details based on Salary.
+
+2.Also write a window function to get maximum and minimum Salary.
+
+create database company_details;
+use company_Details;
+
+create table employees(
+s_no int ,
+emp_Name varchar(20),
+salary int
+);
+select * from employees;
+
+insert into employees(s_no,emp_Name,salary)values(1,"Abi",15000),
+(2,"Baby",20000),(3,"Charles",10000),(4,"Dravid",25000),(5,"Eva",22000);
+
+alter table employees add column Department varchar(20);
+update employees set Department = "Finace"  where emp_Name= "Abi" ;
+
+# Rank
+select s_no,emp_Name,salary,Department ,rank() over
+ (partition by  Department order by salary)as Ranks from employees;
+
+# Maxi and Mini 
+ select s_no,emp_Name,salary,Department ,max(salary) over
+ (partition by  Department order by salary desc)as Maxi_salary ,min(salary) over
+ (partition by  Department order by salary)as Mini_salary from employees;
