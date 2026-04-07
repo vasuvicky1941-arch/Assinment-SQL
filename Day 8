@@ -1,0 +1,57 @@
+1.Create a procedure  without parameters to display student marks above 50.
+
+2.Create a procedure to get input for student id and display that student details.
+
+3.Create a procedure to get input for student id and output as student name.
+
+use student_details ;
+
+create table std_details(
+std_id int ,
+std_name varchar(20),
+std_sub varchar(10),
+std_mark int
+);
+
+select * from std_details;
+
+Insert into std_details values (1,"Alice","Tamil",40),(2,"Bob","English",52),
+(3,"Charles","Maths",45),(4,"David","Science",60),(5,"Eva","Social",80);
+ 
+ delimiter $$
+ create procedure student()
+ begin
+ select*from std_details
+ where std_mark >50;
+end $$
+delimiter ;
+
+call student ;
+#-------------------------
+delimiter @@
+
+create procedure student_id(IN Details varchar(20))
+begin
+select*from std_details
+where std_name = Details ;
+end @@
+
+delimiter ;
+
+call student_id("David");
+
+#-------------------------
+delimiter @@
+
+create procedure student_input2(IN ID int,out tot varchar(20))
+begin
+select name into tot from std_details
+   where std_id = ID;
+   end @@
+  
+  delimiter ;
+  
+call student_input2 (1 ,@name);
+select @name as std_name;
+ 
+ 
