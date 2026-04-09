@@ -1,0 +1,43 @@
+1.Write a program for Insert Trigger and explain
+Trigger Types:
+Event     New Access   Old Access       Typical use
+*INSERT      Yes      No Defaults       Formatting input,setting
+*UPDATE      Yes      Yes Updateing      Auditt Logging
+*DELETE      No        Yes Cleaning up  Archieving records brfore they are  removing
+                       relative data
+ create table order_1(
+ s_no int ,
+ cus_name varchar(20),
+ order_date date,
+ total_amount int 
+ );
+ 
+select * from order_1;
+ 
+ create table history_3(
+ his_id int auto_increment primary key,
+ order_id int,
+ cus_name varchar(20),
+ order_date date,
+ total_amount decimal(10,2),
+ timestamp timestamp
+ );
+ 
+ select*from history_3;
+ 
+delimiter $$
+  
+create trigger after_orders_insert
+after insert on order_1
+for each row
+begin
+insert into history_3(order_id,cus_name,order_date,total_amount,timestamp) 
+values (new.order_id,new.cus_name,new.order_date,new.total_amount,now());
+end $$
+
+delimiter ;
+
+insert into order_1(s_no,cus_name,order_date,total_amount) values(1,"Mani",curdate(),150.00);
+ 
+ 
+ 
