@@ -1,0 +1,11 @@
+1. Create a View for employee table to get the salary if it is <10000 mark it as 'LOW' otherwise 'MODERATE' in separate column 'Sal_Status'.
+  So the result of view should display the following details like EmpID,EmpName,Department,Salary,Sal_Status.
+
+create view emp_salary_status as
+select 
+emp_id as EmpID,
+emp_name as EmpName,
+department as Department,
+salary as Salary,
+if(salary < 10000, 'LOW', 'MODERATE') as Sal_Status
+from employee
