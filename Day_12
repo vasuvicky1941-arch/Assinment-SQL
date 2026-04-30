@@ -1,0 +1,29 @@
+1.Create a function to return student mark for a given student name.
+
+ create table student1(
+    std_no int,
+    std_name varchar(20) unique,
+    std_sub varchar(20),
+    std_marks int
+    );
+    
+    insert into student1 values (1,"Kumar","Tamil",45),(2,"Priya","English",40),
+    (3,"Vicky","Maths",60),(4,"Mani","Science",70),(5,"Deva","Social",35);
+    
+    select*from student1;
+    
+delimiter $$
+
+create function student_name(lname varchar(20))
+returns int
+deterministic
+begin
+declare marks int;
+select std_marks into marks from student1 where std_name=lname;
+return marks ;
+end $$
+
+delimiter ;
+   
+select student_name("Mani")as student_name;
+select * from student1;
